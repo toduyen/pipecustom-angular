@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "custom-pipe-angular": "apps/custom-pipe-angular",
+    "custom-pipe-angular-e2e": "apps/custom-pipe-angular-e2e"
+  }
+}

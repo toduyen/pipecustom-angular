@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/custom-pipe-angular",
+  "sourceRoot": "apps/custom-pipe-angular/src",
+  "prefix": "custom-pipe-angular",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/custom-pipe-angular",
+        "index": "apps/custom-pipe-angular/src/index.html",
+        "main": "apps/custom-pipe-angular/src/main.ts",
+        "polyfills": "apps/custom-pipe-angular/src/polyfills.ts",
+        "tsConfig": "apps/custom-pipe-angular/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/custom-pipe-angular/src/favicon.ico",
+          "apps/custom-pipe-angular/src/assets"
+        ],
+        "styles": ["apps/custom-pipe-angular/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/custom-pipe-angular/src/environments/environment.ts",
+              "with": "apps/custom-pipe-angular/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "custom-pipe-angular:build:production"
+        },
+        "development": {
+          "browserTarget": "custom-pipe-angular:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "custom-pipe-angular:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/custom-pipe-angular/src/**/*.ts",
+          "apps/custom-pipe-angular/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/custom-pipe-angular"],
+      "options": {
+        "jestConfig": "apps/custom-pipe-angular/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
